@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2> Geo API</h2>
+    <p>Your ip adres is {{ ip }} and u are propably in {{ country }}</p>
+    <iframe width="600"
+            height="450"
+            frameborder="0"
+            style="border:0"
+            src="https://www.google.com/maps/embed/v1/view?center={{ latitude }},{{ longitude }}&zoom=8&key={{ api_key }}"
+            </iframe>
+{% endblock %}

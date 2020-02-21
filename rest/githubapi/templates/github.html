@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2> GitHub Api </h2>
+    <form action="#" method="get">
+        <input type="text" name="username">
+        <button type="submit">Search username</button>
+    </form>
+    {% if search_result %}
+        {% if search_result.success %}
+            {{ search_result.name|default_if_none:search_result.login }} has {{ search_result.public_repos }}public repos
+        {% else %}
+        {{ search_result.message }}
+        {% endif %}
+        <p> rate limit {{ search_result.rate.remaining }}/{{ search_result.rate.limit }}</p>
+    {% endif %}
+{% endblock %}
