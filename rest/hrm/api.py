@@ -48,6 +48,7 @@ class UserDetail(APIView):
     def put(self, request, employee_id):
         if not self.get_user(employee_id):
             return Response("user does not exist")
+        model = Users.objects.get(id=employee_id)
         serializer = UsersSerializer(model, data=request.data)
         if serializer.is_valid():
             serializer.save()

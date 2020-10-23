@@ -10,7 +10,6 @@ from django.core.mail import send_mail
 class FriendViewset(viewsets.ModelViewSet):
     queryset = models.Friend.objects.all()
     serializer_class = serializers.FriendSerializer
-    # permission_classes = [IsOwner]
 
 
 class BelongingViewset(viewsets.ModelViewSet):
@@ -26,7 +25,7 @@ class BorrowedViewset(viewsets.ModelViewSet):
     def remind_single(self, request, *args, **kwargs):
         obj = self.get_object()
         send_mail(
-            subject=f'return the { obj.what_name }',
+            subject=f'return the {obj.what_name}',
             message=f'you need to do it asap',
             from_email="admin@admin.admin",
             recipient_list=[obj.to_who.email],
